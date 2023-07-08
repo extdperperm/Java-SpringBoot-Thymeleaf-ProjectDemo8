@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Spring Boot Project Demo 8</title>
+
+<!-- Se cargan los estilos particulares de la vista -->
+<link rel="stylesheet" href="./styles/index.css">
+
+<!-- Carga de estilos UI JQUERY -->
+<link type="text/css" href="./jqueryUI/jquery-ui-1.13.0/jquery-ui.min.css" rel="stylesheet" />
+<!-- Carga de jquery -->
+<!-- Carga de la librería base de jquery -->
+<script src="./jqueryUI/jquery-3.6.0.min.js"></script>
+<!-- Carga de la librería ui de jquery -->
+<script src="./jqueryUI/jquery-ui-1.13.0/jquery-ui.min.js"></script>
+
+<!-- Carga de los js relativos a la vista -->
+<script src="./js/index.js"></script>
+
+</head>
+<body>
+    <div class="cabecera">
+        <div class="cab1"></div>
+        <div class="cap2"></div>
+    </div>
+    <div class="cuerpo">
+        <div class="panel1">
+            <div class="nota"><div class="notacab1"><p>Proyecto</p></div>
+                              <div class="notabody"><p style="text-align: center;"><span>#Spring Boot Project Demo 8</span></p>
+                            </div>
+            </div>
+            <div class="nota"><div class="notacab1"><p>Objetivos</p></div>
+                              <div class="notabody"><p class="objetivos">- <b>P</b>eticiones asincronas con retorno de subvistas.</p>
+                              						<p class="objetivos">- <b>P</b>eticiones asíncronas con retorno JSON.</p>     
+                              </div>        
+                            
+            </div>
+            <div class="nota"><div class="notacab2"><p>Entorno de Desarrollo</p></div>
+                              <div class="notabody"><p><span>Ide:</span> Sprint Tool Suite, versión: 4</p>
+                                                    <p><span>Servidor de referencia:</span> Apache Tomcat, versión: 10</p>
+                                                    <p><span>Jdk:</span> OpenJdk, versión: 17.1</p>
+                            </div>
+            </div>
+            <div class="nota"><div class="notacab2"><p>Estandar de Desarrollo</p></div>
+                              <div class="notabody"><p><span>Gestor de proyecto:</span> Maven, versión: 4</p>
+                            </div>
+            </div> 
+            <div class="nota"><div class="notacab2"><p>Dependencias</p></div>
+                              <div class="notabody"><p><span>Spring Boot Framework:</span> Spring, versión 3.1.*. Módulos: spring-boot-starter-web, spring-boot-starter-tomcat, tomcat-embed-jasper, tomcat-embed-jasper, jackson-databind</p>
+                              <div class="notabody"><p><span>Librería front-end:</span> JQuery, versión 3.6.0</p></div>
+                            </div>
+            </div>    
+            <div class="nota"><div class="notacab2"><p>Documentación y Sitios de Interés</p></div>
+                              <div class="notabody"><p><a href="https://mvnrepository.com/" target="_blank">Ir a</a> Maven Repository</p>
+                                                    <p><a href="https://docs.spring.io/spring-framework/docs/current/reference/html/" target="_blank">Leer</a> Documentación de Spring</p>
+                                                    <p><a href="https://api.jquery.com/jQuery.ajax/" target="_blank">Leer</a> Documentación Ajax Jquery</p>
+                            </div>
+            </div>         
+        </div>
+        <div class="panel2">
+            <div class="item"><p><span>Ejemplo 1 - Petición asíncrona, método Get y retorno de subvista:</span> En este ejemplo, al hacer click, se realiza una petición Get al servidor que retorna una vista (ejemplo1.html) que será cargada en una capa (div) utilizando la función $.load de JQuery. La vista ejemplo1.html se considera en estos casos una subvista. <a id="link1" href="#">Ver Ejemplo</a></p>
+            				<div id="CapaEjemplo1"></div>			  
+            </div>
+            <div class="item"><p><span>Ejemplo 2 - Petición asíncrona, método Post y retorno de subvista:</span> En este ejemplo, se envían los datos de forma asíncrona por AJAX y la vista de respuesta es cargada en una capa div.</p>
+								<form name="F2" action="#">
+                              		<p><label>Nombre: </label> <input type="text" id="F2nombre" /><p>
+                              		<p><label>Edad: </label> <input type="number" id="F2edad" min="1" max="120" step="1" /><p>
+                              		<br>
+                              		<div><input id="F2BtnSend" type="button" value="Enviar" /></div>
+                              	</form>
+            				<div id="CapaEjemplo2"></div>			  
+            </div>
+            <div class="item"><p><span>Ejemplo 3 - Petición asíncrona, método Post y retorno de JSON:</span> En este ejemplo, se envían los datos de forma asíncrona por AJAX y a diferencia de los ejemplos anteriores, la respuesta es un JSON con el cual desde JavaScript se toma decisiones modificando el DOM. Este tipo de uso de AJAX es de los más frecuentes, ya que con los datos en un JSON se puede aplicar lógica de vista modificando cualquier región del DOM y siendo este, un mecanismo más optimo y ligero. En código de servidor se forma una String con formáto JSON.</p>
+								<form name="F3" action="#">
+                              		<p><label>Empresa: </label> <input type="text" id="F3organizacion" /><p>
+                              		<p><label>CIF: </label> <input type="text" id="F3cif" /><p>
+                              		<p><label>Antigüedad: </label> <input type="number" id="F3antiguedad" min="1" max="120" step="1" /><p>
+                              		<br>
+                              		<div><input id="F3BtnSend" type="button" value="Enviar" /></div>
+                              	</form>
+            				<div id="CapaEjemplo3"></div>			  
+            </div>
+            <div class="item"><p><span>Ejemplo 4 - Petición asíncrona, método Get y retorno de JSON:</span> La diferencia con el ejemplo anterior, más allá de que se explota el método Get, es que la respuesta JSON se genera serializando un objeto directamente a código JSON.</p>
+								<form name="F4" action="#">
+                              		<p><label>Empresa: </label> <input type="text" id="F4organizacion" /><p>
+                              		<p><label>CIF: </label> <input type="text" id="F4cif" /><p>
+                              		<p><label>Antigüedad: </label> <input type="number" id="F4antiguedad" min="1" max="120" step="1" /><p>
+                              		<br>
+                              		<div><input id="F4BtnSend" type="button" value="Enviar" /></div>
+                              	</form>
+            				<div id="CapaEjemplo4"></div>			  
+            </div>
+            <div class="item"><p><span>Ejemplo 5 - Petición asíncrona, método Post y retorno de JSON:</span> En este ejemplo, permitimos abrir una ventana modal de Jquery UI y se muestra un ejemplo de como podemos retroalimentar al usuario mientras se ejecuta una acción mostrando una animación de espera.</p>
+            				  <p style="text-align: center;"><input id="btnWin5" type="button" value="Abrir" /></p>
+							  <div id="Win5" style="background-color: rgb(195, 197, 197);">
+									<div id="Espera5" class="clsCarga"></div>
+									<form id="F5" style="margin-left: 150px;margin-top:80px;" name="F5" action="#">
+		                              		<p><label>Empresa: </label> <input type="text" id="F5organizacion" /><p>
+		                              		<p><label>CIF: </label> <input type="text" id="F5cif" /><p>
+		                              		<p><label>Antigüedad: </label> <input type="number" id="F5antiguedad" min="1" max="120" step="1" /><p>
+		                              		<br>
+		                              		<div><input id="F5BtnSend" type="button" value="Enviar" /></div>
+		                             </form>	
+		                             <div id="MensajeError5"></div>
+		                      </div>
+		                      <div id="Resultado5"></div>
+            </div>	 
+                        <div class="item"><p style="text-align: center;"><span>Método de petición asíncrona al servidor - $.ajax</span></p>
+                        <p>En el script index.js tiene el código de ejemplo de las peticiones Ajax realizadas con JQuery. Sin embargo, recuerde que básicamente, los elementos o partes más importantes del método $.ajax que debe comprender y dominar, se le indica a continuación:</p>
+                        <p style="text-align: center;"><img src="./img/JqueryAjax.jpg" alt="Método ajax"/></p>
+            				
+            </div>	 
+        </div>
+
+   </div>
+
+<div class="pie"><p><span>©</span> 2023 - Daniel Pérez Pérez</p></div>
+
+</body>
+</html>

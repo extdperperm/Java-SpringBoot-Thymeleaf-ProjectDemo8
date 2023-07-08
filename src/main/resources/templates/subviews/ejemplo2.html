@@ -1,0 +1,7 @@
+
+	<p th:if="${!error}">Datos recibidos en el servidor:<br>
+	  <b>Nombre: </b><em th:text="${nombre}"></em><br>
+	  <b>Edad: </b><em th:text="${edad}"></em><br>
+	</p>
+
+	<p style="color: red;" th:if="${error}">Error: Los campos son obligatorios.</p>
